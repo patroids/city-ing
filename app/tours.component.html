@@ -1,0 +1,7 @@
+<ul class="cities" *ngIf="tours">
+  <li *ngFor="let tour of tours"
+    [class.selected]="tour == selectedTour"
+    (click)="gotoTour(tour)">
+    <span class="badge">{{tour.id}}</span> {{tour.name}}
+  </li>
+</ul>

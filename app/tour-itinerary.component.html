@@ -1,0 +1,11 @@
+<h2>{{title}}</h2>
+<ul class="cities" *ngIf="tour">
+  <li *ngFor="let city of tour.cities; let i = index"
+    [class.selected]="city == selectedCity"
+    >
+    <span class="badge">{{ i + 1 }}</span> <a (click)="editCity(tour.id, city.id)">{{city.name}}</a> <a class="delete" (click)="deleteCity(tour.id, city.id)">remove</a>
+  </li>
+</ul>
+
+<a *ngIf="tour" [routerLink]="['EditCity', {tourId: tour.id, cityId: 0} ]">Add</a> 
+<a [routerLink]="['Tours']">Back</a>
