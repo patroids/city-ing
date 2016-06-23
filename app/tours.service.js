@@ -58,11 +58,11 @@ var TOURS = [
     { 'id': 10,
         'name': 'Europe 2016',
         'cities': [
-            { 'id': 1011, 'name': 'Paris' },
-            { 'id': 1012, 'name': 'Dijon' },
-            { 'id': 1013, 'name': 'Zermatt' },
-            { 'id': 1014, 'name': 'Lucerne' },
-            { 'id': 1015, 'name': 'Triberg' },
+            { 'id': 1011, 'name': 'Paris', lat: 48.8566, lng: 2.3522 },
+            { 'id': 1012, 'name': 'Dijon', lat: 47.3220, lng: 5.0415 },
+            { 'id': 1013, 'name': 'Zermatt', lat: 46.0207, lng: 7.7491 },
+            { 'id': 1014, 'name': 'Lucerne', lat: 47.0502, lng: 8.3093 },
+            { 'id': 1015, 'name': 'Triberg', lat: 48.1302, lng: 8.2324 },
         ]
     },
     { 'id': 20,

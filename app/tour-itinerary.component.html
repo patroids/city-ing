@@ -1,11 +1,21 @@
 <h2>{{title}}</h2>
-<ul class="cities" *ngIf="tour">
-  <li *ngFor="let city of tour.cities; let i = index"
-    [class.selected]="city == selectedCity"
-    >
-    <span class="badge">{{ i + 1 }}</span> <a (click)="editCity(tour.id, city.id)">{{city.name}}</a> <a class="delete" (click)="deleteCity(tour.id, city.id)">remove</a>
-  </li>
-</ul>
+<div class="data_panel">
+  <ul class="cities" *ngIf="tour">
+    <li *ngFor="let city of tour.cities; let i = index"
+      [class.selected]="city == selectedCity"
+      >
+      <span class="badge">{{ i + 1 }}</span> <a (click)="editCity(tour.id, city.id)">{{city.name}}</a> <a class="delete" (click)="deleteCity(tour.id, city.id)">remove</a>
+    </li>
+  </ul>
+  
+  <div class="nav">
+    <a *ngIf="tour" [routerLink]="['EditCity', {tourId: tour.id, cityId: 0} ]">Add</a> 
+    <a [routerLink]="['Tours']">Back</a>
+  </div>
+</div>
 
-<a *ngIf="tour" [routerLink]="['EditCity', {tourId: tour.id, cityId: 0} ]">Add</a> 
-<a [routerLink]="['Tours']">Back</a>
+<div class="map_panel">
+  <sebm-google-map [latitude]="map_center_lat" [longitude]="map_center_lng" *ngIf="tour" (centerChange)="centerChange($event)">
+    <sebm-google-map-marker *ngFor="let city of tour.cities; let i = index" [latitude]="city.lat" [longitude]="city.lng"></sebm-google-map-marker>
+  </sebm-google-map>
+</div>
