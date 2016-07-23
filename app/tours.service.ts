@@ -1,24 +1,36 @@
 import { Injectable } from '@angular/core';
-import { Tour, City } from './tour';
+import { Tour, City, Coords } from './tour';
 
 @Injectable()
 export class ToursService {
-  getTours() {
+  getTours():Promise<Tour[]> {
     return Promise.resolve(TOURS);
   }
   
-  getTour(tourId: number) {
+  getTour(tourId: number):Promise<Tour> {
     let tour = TOURS.filter(tour => tour.id === tourId)[0];
     return Promise.resolve(tour);
   }
   
-  getCity(tourId: number, cityId: number) {
+  getCity(tourId: number, cityId: number):Promise<[Tour, City]> {
     let tour = TOURS.filter(tour => tour.id === tourId)[0];
-    let city = tour.cities.filter(city => city.id === cityId)[0];
-    return Promise.resolve([tour, city]);
+    
+    if (tour) {
+      let city = tour.cities.filter(city => city.id === cityId)[0];
+      
+      if (city) {
+        return Promise.resolve([tour, city]);
+      } else {
+        return Promise.resolve(<[Tour, City]>[tour, null]);
+      }
+      
+    } else {
+      return Promise.resolve(<[Tour, City]>[null, null]);
+    }
+    
   }
   
-  saveCity(tourId: number, cityName: string) {
+  saveCity(tourId: number, cityName: string):void {
     let tour = TOURS.filter(tour => tour.id === tourId)[0];
     let lastCity = tour.cities[tour.cities.length - 1];
     
@@ -30,7 +42,7 @@ export class ToursService {
     }
   }
   
-  deleteCity(tourId: number, cityId: number) {
+  deleteCity(tourId: number, cityId: number):void {
     let tour = TOURS.filter(tour => tour.id === tourId)[0];
     let i = 0;
     for (i = 0; i < tour.cities.length; i++) {
@@ -46,24 +58,23 @@ export class ToursService {
   }
 }
 
-
 var TOURS: Tour[] = [
   { 'id': 10,
     'name': 'Europe 2016',
     'cities': [
-      { 'id': 1011, 'name': 'Paris', lat: 48.8566, lng: 2.3522 },
-      { 'id': 1012, 'name': 'Dijon', lat: 47.3220, lng: 5.0415 },
-      { 'id': 1013, 'name': 'Zermatt', lat: 46.0207, lng: 7.7491 },
-      { 'id': 1014, 'name': 'Lucerne', lat: 47.0502, lng: 8.3093 },
-      { 'id': 1015, 'name': 'Triberg', lat: 48.1302, lng: 8.2324 },
+      { 'id': 1011, 'name': 'Paris', 'coords': { 'lat': 48.8566, 'lng': 2.3522 } },
+      { 'id': 1012, 'name': 'Dijon', 'coords': { 'lat': 47.3220, 'lng': 5.0415 } },
+      { 'id': 1013, 'name': 'Zermatt', 'coords': { 'lat': 46.0207, 'lng': 7.7491 } },
+      { 'id': 1014, 'name': 'Lucerne', 'coords': { 'lat': 47.0502, 'lng': 8.3093 } },
+      { 'id': 1015, 'name': 'Triberg', 'coords': { 'lat': 48.1302, 'lng': 8.2324 } },
     ]
   },
   { 'id': 20,
     'name': 'USA 2016',
     'cities': [
-      { 'id': 2021, 'name': 'San Francisco' },
-      { 'id': 2022, 'name': 'Los Angeles' },
-      { 'id': 2023, 'name': 'San Diego' },
+      { 'id': 2021, 'name': 'San Francisco', 'coords': { 'lat': 0, 'lng': 0 } },
+      { 'id': 2022, 'name': 'Los Angeles', 'coords': { 'lat': 0, 'lng': 0 } },
+      { 'id': 2023, 'name': 'San Diego', 'coords': { 'lat': 0, 'lng': 0 } },
     ]
   }
 ];

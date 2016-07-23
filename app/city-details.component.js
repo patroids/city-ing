@@ -24,12 +24,12 @@ var CityDetailsComponent = (function () {
     CityDetailsComponent.prototype.getCity = function (tourId, cityId) {
         var _this = this;
         this.toursService.getCity(tourId, cityId).then(function (result) {
-            if (result[0] === undefined) {
+            if (result[0] === null) {
                 console.log('error');
             }
             else {
                 _this.tourId = tourId;
-                if (result[1] === undefined) {
+                if (result[1] === null) {
                     _this.city = new tour_1.City;
                     _this.city.id = 0;
                     _this.city.name = '';

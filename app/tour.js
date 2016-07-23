@@ -1,4 +1,10 @@
 "use strict";
+var Coords = (function () {
+    function Coords() {
+    }
+    return Coords;
+}());
+exports.Coords = Coords;
 var City = (function () {
     function City() {
     }

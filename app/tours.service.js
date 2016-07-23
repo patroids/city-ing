@@ -22,8 +22,18 @@ var ToursService = (function () {
     };
     ToursService.prototype.getCity = function (tourId, cityId) {
         var tour = TOURS.filter(function (tour) { return tour.id === tourId; })[0];
-        var city = tour.cities.filter(function (city) { return city.id === cityId; })[0];
-        return Promise.resolve([tour, city]);
+        if (tour) {
+            var city = tour.cities.filter(function (city) { return city.id === cityId; })[0];
+            if (city) {
+                return Promise.resolve([tour, city]);
+            }
+            else {
+                return Promise.resolve([tour, null]);
+            }
+        }
+        else {
+            return Promise.resolve([null, null]);
+        }
     };
     ToursService.prototype.saveCity = function (tourId, cityName) {
         var tour = TOURS.filter(function (tour) { return tour.id === tourId; })[0];
@@ -58,19 +68,19 @@ var TOURS = [
     { 'id': 10,
         'name': 'Europe 2016',
         'cities': [
-            { 'id': 1011, 'name': 'Paris', lat: 48.8566, lng: 2.3522 },
-            { 'id': 1012, 'name': 'Dijon', lat: 47.3220, lng: 5.0415 },
-            { 'id': 1013, 'name': 'Zermatt', lat: 46.0207, lng: 7.7491 },
-            { 'id': 1014, 'name': 'Lucerne', lat: 47.0502, lng: 8.3093 },
-            { 'id': 1015, 'name': 'Triberg', lat: 48.1302, lng: 8.2324 },
+            { 'id': 1011, 'name': 'Paris', 'coords': { 'lat': 48.8566, 'lng': 2.3522 } },
+            { 'id': 1012, 'name': 'Dijon', 'coords': { 'lat': 47.3220, 'lng': 5.0415 } },
+            { 'id': 1013, 'name': 'Zermatt', 'coords': { 'lat': 46.0207, 'lng': 7.7491 } },
+            { 'id': 1014, 'name': 'Lucerne', 'coords': { 'lat': 47.0502, 'lng': 8.3093 } },
+            { 'id': 1015, 'name': 'Triberg', 'coords': { 'lat': 48.1302, 'lng': 8.2324 } },
         ]
     },
     { 'id': 20,
         'name': 'USA 2016',
         'cities': [
-            { 'id': 2021, 'name': 'San Francisco' },
-            { 'id': 2022, 'name': 'Los Angeles' },
-            { 'id': 2023, 'name': 'San Diego' },
+            { 'id': 2021, 'name': 'San Francisco', 'coords': { 'lat': 0, 'lng': 0 } },
+            { 'id': 2022, 'name': 'Los Angeles', 'coords': { 'lat': 0, 'lng': 0 } },
+            { 'id': 2023, 'name': 'San Diego', 'coords': { 'lat': 0, 'lng': 0 } },
         ]
     }
 ];

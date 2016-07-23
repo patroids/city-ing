@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { City } from './tour';
+import { Tour, City } from './tour';
 import { Router, RouteParams, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 import { ToursService } from './tours.service';
 
@@ -25,11 +25,11 @@ export class CityDetailsComponent {
   
   getCity(tourId: number, cityId: number) {
     this.toursService.getCity(tourId, cityId).then(result => {
-      if (result[0] === undefined) {
+      if (result[0] === null) {
         console.log('error');
       } else {
         this.tourId = tourId;
-        if (result[1] === undefined) {
+        if (result[1] === null) {
           this.city = new City;
           this.city.id = 0;
           this.city.name = '';

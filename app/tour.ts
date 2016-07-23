@@ -1,8 +1,13 @@
+export class Coords {
+  lat: number;
+  lng: number;
+}
+
 export class City {
   id: number;
   name: string;
+  coords: Coords;
   /*
-  coords: { lat: float, lng: float };
   desc: text;
   */
 }

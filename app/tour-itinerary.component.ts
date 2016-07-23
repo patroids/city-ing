@@ -29,7 +29,7 @@ export class TourItineraryComponent implements OnInit {
     mapConfig.apiKey = 'AIzaSyCreiHKHfqZfIwCwD7al9_pJKUzkMRipT8';
     mapConfig.libraries = ['places'];
     mapLoader.load().then(() => {
-      console.log(google.maps.places.RankBy.DISTANCE);
+      //console.log(google.maps.places.RankBy.DISTANCE);
     });
   }
   
@@ -65,10 +65,10 @@ export class TourItineraryComponent implements OnInit {
     let min_lat = 90, max_lat = -90;
     let min_lng = 180, max_lng = -180;
     for (let i = 0; i < cities.length; i++) {
-      min_lat = Math.min(min_lat, cities[i].lat);
-      max_lat = Math.max(max_lat, cities[i].lat);
-      min_lng = Math.min(min_lng, cities[i].lng);
-      max_lng = Math.max(max_lng, cities[i].lng);
+      min_lat = Math.min(min_lat, cities[i].coords.lat);
+      max_lat = Math.max(max_lat, cities[i].coords.lat);
+      min_lng = Math.min(min_lng, cities[i].coords.lng);
+      max_lng = Math.max(max_lng, cities[i].coords.lng);
     }
     
     this.map_center_lat = (max_lat + min_lat) / 2;
