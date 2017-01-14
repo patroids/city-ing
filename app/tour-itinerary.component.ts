@@ -1,16 +1,13 @@
 import { Injectable, Component, OnInit } from '@angular/core';
 import { Router, RouteParams, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
-import { Tour, City } from './tour';
-import { ToursService } from './tours.service';
-import { GOOGLE_MAPS_DIRECTIVES, GOOGLE_MAPS_PROVIDERS } from 'angular2-google-maps/core';
-import { LazyMapsAPILoaderConfig } from 'angular2-google-maps/core/services/maps-api-loader/lazy-maps-api-loader';
-import { MapsAPILoader } from 'angular2-google-maps/core/services/maps-api-loader/maps-api-loader';
+import { Tour, City } from './classes/tour';
+import { ToursService } from './services/tours.service';
 
 @Component({
-  templateUrl: 'app/tour-itinerary.component.html',
-  styleUrls:['app/app.component.css'],
-  directives: [ ROUTER_DIRECTIVES, GOOGLE_MAPS_DIRECTIVES ],
-  providers: [ MapsAPILoader, LazyMapsAPILoaderConfig, GOOGLE_MAPS_PROVIDERS ]
+  templateUrl: 'app/templates/tour-itinerary.component.html',
+  styleUrls:['app/assets/app.component.css'],
+  directives: [ ROUTER_DIRECTIVES ],
+  providers: [  ]
 })
 
 export class TourItineraryComponent implements OnInit {
@@ -23,14 +20,8 @@ export class TourItineraryComponent implements OnInit {
   // Initialisation.
   constructor(private router: Router,
               private routeParams: RouteParams,
-              private toursService: ToursService,
-              private mapConfig: LazyMapsAPILoaderConfig,
-              private mapLoader: MapsAPILoader) {
-    mapConfig.apiKey = 'AIzaSyCreiHKHfqZfIwCwD7al9_pJKUzkMRipT8';
-    mapConfig.libraries = ['places'];
-    mapLoader.load().then(() => {
-      //console.log(google.maps.places.RankBy.DISTANCE);
-    });
+              private toursService: ToursService) {
+    
   }
   
   getTour(id: number) {

@@ -10,17 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_deprecated_1 = require('@angular/router-deprecated');
-var tours_service_1 = require('./tours.service');
 var tours_component_1 = require('./tours.component');
 var tour_itinerary_component_1 = require('./tour-itinerary.component');
 var city_details_component_1 = require('./city-details.component');
+var tours_service_1 = require('./services/tours.service');
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'Your Tours';
     }
     AppComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
+            selector: 'city-ing',
             template: "\n    <h1>{{title}}</h1>\n    <router-outlet></router-outlet>\n  ",
             directives: [
                 router_deprecated_1.ROUTER_DIRECTIVES,

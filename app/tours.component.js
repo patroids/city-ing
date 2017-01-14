@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_deprecated_1 = require('@angular/router-deprecated');
-var tours_service_1 = require('./tours.service');
+var tours_service_1 = require('./services/tours.service');
 var tour_itinerary_component_1 = require('./tour-itinerary.component');
 var ToursComponent = (function () {
     // Initialisation.
@@ -32,8 +32,8 @@ var ToursComponent = (function () {
     };
     ToursComponent = __decorate([
         core_1.Component({
-            templateUrl: 'app/tours.component.html',
-            styleUrls: ['app/app.component.css'],
+            templateUrl: 'app/templates/tours.component.html',
+            styleUrls: ['app/assets/app.component.css'],
             directives: [tour_itinerary_component_1.TourItineraryComponent],
         }), 
         __metadata('design:paramtypes', [router_deprecated_1.Router, tours_service_1.ToursService])

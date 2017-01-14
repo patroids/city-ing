@@ -9,9 +9,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var tour_1 = require('./tour');
 var router_deprecated_1 = require('@angular/router-deprecated');
-var tours_service_1 = require('./tours.service');
+var tour_1 = require('./classes/tour');
+var tours_service_1 = require('./services/tours.service');
 var CityDetailsComponent = (function () {
     // Initialisation.
     function CityDetailsComponent(router, routeParams, toursService) {
@@ -63,8 +63,8 @@ var CityDetailsComponent = (function () {
     };
     CityDetailsComponent = __decorate([
         core_1.Component({
-            templateUrl: 'app/city-details.component.html',
-            styleUrls: ['app/app.component.css'],
+            templateUrl: 'app/templates/city-details.component.html',
+            styleUrls: ['app/assets/app.component.css'],
             directives: [router_deprecated_1.ROUTER_DIRECTIVES],
         }), 
         __metadata('design:paramtypes', [router_deprecated_1.Router, router_deprecated_1.RouteParams, tours_service_1.ToursService])

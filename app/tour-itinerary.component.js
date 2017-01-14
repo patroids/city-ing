@@ -10,27 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_deprecated_1 = require('@angular/router-deprecated');
-var tours_service_1 = require('./tours.service');
-var core_2 = require('angular2-google-maps/core');
-var lazy_maps_api_loader_1 = require('angular2-google-maps/core/services/maps-api-loader/lazy-maps-api-loader');
-var maps_api_loader_1 = require('angular2-google-maps/core/services/maps-api-loader/maps-api-loader');
+var tours_service_1 = require('./services/tours.service');
 var TourItineraryComponent = (function () {
     // Initialisation.
-    function TourItineraryComponent(router, routeParams, toursService, mapConfig, mapLoader) {
+    function TourItineraryComponent(router, routeParams, toursService) {
         this.router = router;
         this.routeParams = routeParams;
         this.toursService = toursService;
-        this.mapConfig = mapConfig;
-        this.mapLoader = mapLoader;
         // Internal parameters.
         this.title = 'Your Tour Itinerary';
         this.map_center_lat = 0;
         this.map_center_lng = 0;
-        mapConfig.apiKey = 'AIzaSyCreiHKHfqZfIwCwD7al9_pJKUzkMRipT8';
-        mapConfig.libraries = ['places'];
-        mapLoader.load().then(function () {
-            //console.log(google.maps.places.RankBy.DISTANCE);
-        });
     }
     TourItineraryComponent.prototype.getTour = function (id) {
         var _this = this;
@@ -69,12 +59,12 @@ var TourItineraryComponent = (function () {
     };
     TourItineraryComponent = __decorate([
         core_1.Component({
-            templateUrl: 'app/tour-itinerary.component.html',
-            styleUrls: ['app/app.component.css'],
-            directives: [router_deprecated_1.ROUTER_DIRECTIVES, core_2.GOOGLE_MAPS_DIRECTIVES],
-            providers: [maps_api_loader_1.MapsAPILoader, lazy_maps_api_loader_1.LazyMapsAPILoaderConfig, core_2.GOOGLE_MAPS_PROVIDERS]
+            templateUrl: 'app/templates/tour-itinerary.component.html',
+            styleUrls: ['app/assets/app.component.css'],
+            directives: [router_deprecated_1.ROUTER_DIRECTIVES],
+            providers: []
         }), 
-        __metadata('design:paramtypes', [router_deprecated_1.Router, router_deprecated_1.RouteParams, tours_service_1.ToursService, lazy_maps_api_loader_1.LazyMapsAPILoaderConfig, maps_api_loader_1.MapsAPILoader])
+        __metadata('design:paramtypes', [router_deprecated_1.Router, router_deprecated_1.RouteParams, tours_service_1.ToursService])
     ], TourItineraryComponent);
     return TourItineraryComponent;
 }());

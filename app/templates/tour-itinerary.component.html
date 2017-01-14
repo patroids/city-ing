@@ -1,0 +1,24 @@
+<h2>{{title}}</h2>
+<div class="data_panel">
+  <ul class="cities" *ngIf="tour">
+    <li *ngFor="let city of tour.cities; let i = index"
+      [class.selected]="city == selectedCity"
+      >
+      <span class="badge">{{ i + 1 }}</span> <a (click)="editCity(tour.id, city.id)">{{city.name}}</a> <a class="delete" (click)="deleteCity(tour.id, city.id)">remove</a>
+    </li>
+  </ul>
+  
+  <div class="nav">
+    <a *ngIf="tour" [routerLink]="['EditCity', {tourId: tour.id, cityId: 0} ]">Add</a> 
+    <a [routerLink]="['Tours']">Back</a>
+  </div>
+</div>
+
+<div class="map_panel">
+  <google-map [center]="center" [zoom]="zoom" [disableDefaultUI]="disableDefaultUI" [disableDoubleClickZoom]="disableDoubleClickZoom"
+  [mapTypeId]="mapTypeId" [maxZoom]="maxZoom" [minZoom]="minZoom" [styles]="styles">
+      <!--this property is required: position-->
+      <google-map-marker [position]="position" [title]="title" [content]="content">
+      </google-map-marker>
+  </google-map>
+</div>

@@ -1,12 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
-import { ToursService } from './tours.service';
+
 import { ToursComponent } from './tours.component';
 import { TourItineraryComponent } from './tour-itinerary.component';
 import { CityDetailsComponent } from './city-details.component';
 
+import { GoogleMapDirective } from './directives/google-map.directive';
+import { GoogleMapMarkerDirective } from './directives/google-map-marker.directive';
+
+import { ToursService } from './services/tours.service';
+import { MapsService } from './services/maps.service';
+import { GeolocationService } from './services/geolocation.service';
+import { GeocodingService } from './services/geocoding.service';
+
 @Component({
-  selector: 'my-app',
+  selector: 'city-ing',
   template: `
     <h1>{{title}}</h1>
     <router-outlet></router-outlet>

@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Tour, City } from './tour';
 import { Router, RouteParams, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
-import { ToursService } from './tours.service';
+import { Tour, City } from './classes/tour';
+import { ToursService } from './services/tours.service';
 
 @Component({
-  templateUrl: 'app/city-details.component.html',
-  styleUrls:['app/app.component.css'],
+  templateUrl: 'app/templates/city-details.component.html',
+  styleUrls:['app/assets/app.component.css'],
   directives: [ROUTER_DIRECTIVES],
 })
 

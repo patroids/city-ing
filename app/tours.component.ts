@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router-deprecated';
-import { Tour, City } from './tour';
-import { ToursService } from './tours.service';
+import { Tour, City } from './classes/tour';
+import { ToursService } from './services/tours.service';
 import { TourItineraryComponent } from './tour-itinerary.component';
 
 @Component({
-  templateUrl: 'app/tours.component.html',
-  styleUrls:['app/app.component.css'],
+  templateUrl: 'app/templates/tours.component.html',
+  styleUrls:['app/assets/app.component.css'],
   directives: [TourItineraryComponent],
 })
 
